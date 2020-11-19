@@ -1,0 +1,16 @@
+section {
+  position: relative;
+  margin: 0 auto;
+  padding: 6.25rem 0;
+  overflow: hidden;
+}
+
+.list-group.list-group-categories {
+  max-height: 400px;
+  overflow: auto;
+  border: 1.5px solid #e5e5e5;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
