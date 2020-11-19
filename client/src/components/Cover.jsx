@@ -17,10 +17,10 @@ class Cover extends React.Component {
                 </h1>
               </div>
             </div>
-            <div className="row">
+            <div className="row ">
               <div className="col">
                 <div className="row gutter-1">
-                  <div className="form-group col-md-5">
+                  <div className="form-group col-md-7">
                     <input
                       type="email"
                       className="form-control-lg form-control"
