@@ -1,11 +1,13 @@
 import React from "react";
 import Category from "./Category";
-import StickyBox from "react-sticky-box";
+import Date from "./Date";
 
 class Filters extends React.Component {
-  state = { categories: [] };
+  state = {
+    categories: []
+  };
 
-  componentDidMount = () => {
+  componentDidMount() {
     const url = "/api/v1/categories/index";
     fetch(url)
       .then(response => response.json())
@@ -14,97 +16,24 @@ class Filters extends React.Component {
           categories: data
         });
       });
-  };
+  }
   render() {
     const { categories } = this.state;
     const allCategories = categories.map(category => (
       <Category category={category} />
     ));
-    const noCategory = <div></div>;
-
     return (
-      <div>
+      <div className="mt-10">
         <div className="widget">
           <span className="widget-title">Dates</span>
           <div className="list-group list-group-categories">
-            <a
-              href="#"
-              className="list-group-item d-flex justify-content-between align-items-center"
-            >
-              Choisissez une date...
-              <span className="badge">
-                <i className="icon-chevron-right2"></i>
-              </span>
-            </a>
-            <a
-              href="#"
-              className="list-group-item d-flex justify-content-between align-items-center"
-            >
-              Aujourd'hui
-              <span className="badge">
-                <i className="icon-chevron-right2"></i>
-              </span>
-            </a>
-            <a
-              href="#"
-              className="list-group-item d-flex justify-content-between align-items-center"
-            >
-              Demain
-              <span className="badge">
-                <i className="icon-chevron-right2"></i>
-              </span>
-            </a>
-            <a
-              href="#"
-              className="list-group-item d-flex justify-content-between align-items-center"
-            >
-              Ce week-end
-              <span className="badge">
-                <i className="icon-chevron-right2"></i>
-              </span>
-            </a>
-            <a
-              href="#"
-              className="list-group-item d-flex justify-content-between align-items-center"
-            >
-              Cette semaine
-              <span className="badge">
-                <i className="icon-chevron-right2"></i>
-              </span>
-            </a>
-            <a
-              href="#"
-              className="list-group-item d-flex justify-content-between align-items-center"
-            >
-              Semaine suivante
-              <span className="badge">
-                <i className="icon-chevron-right2"></i>
-              </span>
-            </a>
-            <a
-              href="#"
-              className="list-group-item d-flex justify-content-between align-items-center"
-            >
-              Ce mois-ci
-              <span className="badge">
-                <i className="icon-chevron-right2"></i>
-              </span>
-            </a>
-            <a
-              href="#"
-              className="list-group-item d-flex justify-content-between align-items-center"
-            >
-              Mois prochain
-              <span className="badge">
-                <i className="icon-chevron-right2"></i>
-              </span>
-            </a>
+            {/* {dates.length > 0 ? allDates : ""} */}
           </div>
         </div>
         <div className="widget">
-          <span className="widget-title">Tags</span>
+          <span className="widget-title">Catégories</span>
           <div className="tag-cloud">
-            {categories.length > 0 ? allCategories : noCategory}
+            {categories.length > 0 ? allCategories : ""}
           </div>
         </div>
       </div>

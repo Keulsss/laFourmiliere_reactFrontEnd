@@ -11,19 +11,16 @@ class App extends React.Component {
     return (
       <>
         <Header />
-        <Cover />
         <section>
-          <div className="container-fluid ">
-            <div className="row">
-              <aside className="col-md-4 pl-lg-5 mt-7">
-                <Sticky
-                  stickyStyle={{ transform: "translateY(100px)" }}
-                  topOffset={-80}
-                >
-                  <Filters />
-                </Sticky>
-              </aside>
-              <div className="col-md-8">
+          <div className="row">
+            <aside className="col-md-3 pl-lg-5 bg-light">
+              <Sticky topOffset={-100} bottomOffset={-20}>
+                <Filters />
+              </Sticky>
+            </aside>
+            <div className="col-md-9">
+              <div className="container-fluid ">
+                <Cover />
                 <Event />
               </div>
             </div>

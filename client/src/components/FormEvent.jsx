@@ -5,7 +5,7 @@ import { InputGroup } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import React, { useState } from "react";
 
-function FormEvent() {
+const FormEvent = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -25,7 +25,7 @@ function FormEvent() {
   return (
     <>
       <Button
-        className="btn btn-rounded btn-outline-white ml-md-1"
+        className="btn btn-rounded btn-outline-primary ml-md-1"
         onClick={handleShow}
       >
         Créer un évènement
@@ -38,7 +38,7 @@ function FormEvent() {
         backdrop="static"
         keyboard={false}
       >
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title mr="5">Créer un évènement</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -89,14 +89,21 @@ function FormEvent() {
             <Form.Group>
               <Form.File id="exampleFormControlFile1" label="Photo" />
             </Form.Group>
-            <Button className="float-right" type="submit">
+            <Button className="float-right ml-2" type="submit">
               Ajouter
+            </Button>
+            <Button
+              className="float-right"
+              variant="secondary"
+              onClick={handleClose}
+            >
+              Fermer
             </Button>
           </Form>
         </Modal.Body>
       </Modal>
     </>
   );
-}
+};
 
 export default FormEvent;

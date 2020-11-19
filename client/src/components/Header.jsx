@@ -9,7 +9,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <header className="header-sticky header-light bg-white">
+      <header className="header-sticky header-light bg-white shadow">
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light">
             <a className="navbar-brand" href="/">

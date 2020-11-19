@@ -8,18 +8,7 @@ class Footer extends React.Component {
         <div className="container py-5">
           <div className="row justify-content-between align-items-center">
             <div className="col-md-5 text-center text-md-left">
-              <ul className="nav">
-                <li className="nav-item">
-                  <a className="nav-link" href="/">
-                    Documentation
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/">
-                    Purchase
-                  </a>
-                </li>
-              </ul>
+              <span class="copyright-text">&copy; Keulsss.</span>
             </div>
             <div className="col-md-2 text-center">
               <img className="logo-sm" src={logoLight} alt="Logo" />

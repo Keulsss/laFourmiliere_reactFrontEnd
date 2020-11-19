@@ -1,7 +1,7 @@
 section {
   position: relative;
   margin: 0 auto;
-  padding: 6.25rem 0;
+  padding: 5rem 0;
   overflow: hidden;
 }
 
@@ -13,4 +13,13 @@ section {
   border-top-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
+}
+
+.component-example {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero[class*="-with-header"] {
+  padding-top: 5rem;
 }

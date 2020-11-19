@@ -22092,10 +22092,6 @@ footer .nav li {
   overflow-y: scroll;
 }
 
-.hero[class*="-with-header"] {
-  padding-top: 12.5rem;
-}
-
 .box>* {
   border-radius: 0.25rem;
   display: -ms-flexbox;
@@ -28594,12 +28590,6 @@ pre[class*="language-"] {
 
 .component>.tab-content>.tab-pane[class*="bg-light"] {
   border: 1px solid #e5e5e5;
-}
-
-.component-example {
-  position: relative;
-  padding: 75px 0;
-  overflow: hidden;
 }
 
 .component-example[class*="-fit"] {
