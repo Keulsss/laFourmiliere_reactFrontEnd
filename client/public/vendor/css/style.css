@@ -4913,18 +4913,6 @@ input[type="button"].btn-block {
   border-bottom-right-radius: 0.2rem;
 }
 
-.badge {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  font-size: 1em;
-  font-weight: 400;
-  line-height: 1;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: 0.25rem;
-}
-
 .badge:empty {
   display: none;
 }
@@ -24398,9 +24386,7 @@ footer .nav li {
   color: #4829B2;
 }
 
-.list-group-categories .badge {
-  background: #e5e5e5;
-}
+
 
 .feed {
   padding: 0;
@@ -28092,12 +28078,6 @@ footer .nav li {
 .card-body+.card-footer,
 .card-header+.card-body {
   padding-top: 0;
-}
-
-.card-img-container {
-  position: relative;
-  overflow: hidden;
-  max-height: 200px;
 }
 
 .card-img-container::before {
