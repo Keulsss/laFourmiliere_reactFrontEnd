@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const Paginate = ({ eventsCount, pageSize, onPageChange, currentPage }) => {
   const totalPages = Math.ceil(eventsCount / pageSize);
-  if (totalPages === 1) return null;
+  if (totalPages === 1 || !totalPages) return null;
   const pages = _.range(1, totalPages + 1);
   return (
     <React.Fragment>

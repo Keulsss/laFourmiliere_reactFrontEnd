@@ -4,38 +4,24 @@ import "moment/locale/fr";
 
 const EventCard = ({ event }) => {
   return (
-    <div
-      className="tab-pane show active"
-      role="tabpanel"
-      aria-labelledby="component-1-1"
-    >
-      <div className="component-example">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 col-lg-12">
-              <div className="card-2 card-minimal">
-                <a href="#" className="card-img-container">
-                  <img
-                    className="card-img"
-                    src={event.image.url}
-                    alt="Card cap"
-                  />
-                </a>
-                <div className="card-body">
-                  <h5 className="card-title text-primary">
-                    <Moment locale="fr" format="llll">
-                      {event.start_time}
-                    </Moment>
-                  </h5>
-                  <h5 className="card-title">
-                    <a href="#">{event.title}</a>
-                  </h5>
-                  <span className="card-meta">
-                    {event.city} - {event.zip_code}
-                  </span>
-                </div>
-              </div>
-            </div>
+    <div className="boxed rising p-2 card card-minimal">
+      <div className="row no-gutters">
+        <div className="col-md-4">
+          <a href="#" className="card-img-container">
+            <img className="card-img" src={event.image.url} alt="Card cap" />
+          </a>
+        </div>
+        <div className="col-md-8">
+          <div className="card-body">
+            <h5 className="card-title text-primary">
+              <Moment locale="fr" format="llll">
+                {event.start_time}
+              </Moment>
+            </h5>
+            <h5 className="card-title">{event.title}</h5>
+            <span className="card-meta">
+              {event.city} - {event.zip_code}
+            </span>
           </div>
         </div>
       </div>

@@ -22,6 +22,7 @@
     "react-paginate": "^6.5.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "react-sticky": "^6.0.3",
     "react-sticky-box": "^0.9.3",
     "react-sticky-el": "^2.0.5",
     "typescript": "^3.7.0-beta",
@@ -50,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "video.js": "^7.10.2"
   }
 }
