@@ -6,27 +6,34 @@ const ListGroup = ({
   valueProperty,
   onItemSelect,
   selectedItem,
-  title
+  title,
+  onItemUnselect
 }) => {
   return (
     <div className="widget">
       <span className="widget-title">{title}</span>
       <ul className="list-group list-group-minimal">
         {items.map(item => (
-          <li
+          <a
             key={item[valueProperty]}
+            href="#"
             className={
               item === selectedItem
-                ? "list-group-item active"
-                : "list-group-item"
+                ? "list-group-item d-flex justify-content-between align-items-center active"
+                : "list-group-item d-flex justify-content-between align-items-center"
             }
-            onClick={() => onItemSelect(item)}
+            onClick={
+              item !== selectedItem ? () => onItemSelect(item) : undefined
+            }
           >
-            <a href="#">
-              {item[textProperty]}
-              <i className={item === selectedItem ? "icon-remove" : ""}></i>
-            </a>
-          </li>
+            {item[textProperty]}
+            <span
+              className={item === selectedItem ? "icon-x" : ""}
+              onClick={
+                item === selectedItem ? () => onItemUnselect(item) : undefined
+              }
+            ></span>
+          </a>
         ))}
       </ul>
     </div>

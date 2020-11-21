@@ -18,7 +18,9 @@ const EventCard = ({ event }) => {
                 {event.start_time}
               </Moment>
             </h5>
-            <h5 className="card-title">{event.title}</h5>
+            <a href="#">
+              <h5 className="card-title text-black">{event.title}</h5>
+            </a>
             <span className="card-meta">
               {event.city} - {event.zip_code}
             </span>

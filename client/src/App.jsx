@@ -51,6 +51,14 @@ class App extends Component {
     this.setState({ selectedDate: item, currentPage: 1 });
   };
 
+  handleCategoryUnselect = item => {
+    this.setState({ selectedCategory: null, currentPage: 1 });
+  };
+
+  handleDateUnselect = item => {
+    this.setState({ selectedDate: null, currentPage: 1 });
+  };
+
   render() {
     const {
       events,
@@ -85,11 +93,13 @@ class App extends Component {
                   <ListGroup
                     items={dates}
                     onItemSelect={this.handleDateSelect}
+                    onItemUnselect={this.handleDateUnselect}
                     selectedItem={selectedDate}
                     title="DATE"
                   />
                   <Widget
                     items={categories}
+                    onItemUnselect={this.handleCategoryUnselect}
                     onItemSelect={this.handleCategorySelect}
                     selectedItem={selectedCategory}
                     title="CATEGORIE"
@@ -100,7 +110,7 @@ class App extends Component {
             <div className="col-md-7">
               <div className="container-fluid content">
                 <Cover />
-                <div className="row mb-0">
+                <div className="row mb-0 mt-0">
                   <Events
                     currentPage={currentPage}
                     pageSize={pageSize}

@@ -6,7 +6,8 @@ const Tags = ({
   valueProperty,
   onItemSelect,
   selectedItem,
-  title
+  title,
+  onItemUnselect
 }) => {
   return (
     <div className="widget">
@@ -15,11 +16,13 @@ const Tags = ({
         {items.map(item => (
           <a
             href="#"
-            onClick={() => onItemSelect(item)}
-            key={item[valueProperty]}
-            className={
-              item === selectedItem ? "list-group-item-link-active" : "active"
+            onClick={
+              item === selectedItem
+                ? () => onItemUnselect(item)
+                : () => onItemSelect(item)
             }
+            key={item[valueProperty]}
+            className={item === selectedItem ? "active" : ""}
           >
             {item[textProperty]}
           </a>

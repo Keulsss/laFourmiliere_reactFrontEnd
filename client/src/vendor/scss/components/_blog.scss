@@ -252,6 +252,11 @@
     border-radius: 10rem;
 
     &:hover {
+      background: $text-white-secondary;
+      color: $black;
+    }
+
+    &.active {
       background: $primary;
       color: $white;
     }

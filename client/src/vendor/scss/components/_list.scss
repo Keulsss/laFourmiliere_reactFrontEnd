@@ -28,12 +28,14 @@
 	a {
 		@include transition();
 		display: inline-block;
-		color: inherit;
+		color: $body-color !important;
 		width: 100%;
 		height: 100%;
+		font-size: $font-size-sm !important;
 
 		&:hover {
-			color: $black;
+			color: $body-color;
+			font-size: $font-size-sm;
 		}
 	}
 }
@@ -71,9 +73,13 @@
 
 // minimal
 .list-group-minimal {
-	.list-group-item {
+
+	a.list-group-item {
 		padding: 1em;
 		border: 0;
+		@include transition();
+		display: inline-block;
+		color: $black !important;
 
 		&.active {
 			background-color: $text-white-primary;
@@ -84,25 +90,30 @@
 		}
 
 		[class*="icon"] {
-			padding-right: 0;
+			padding-right: 0.8rem;
+			border-radius: 50%;
+			line-height: 2.2rem;
+			color: $primary;
+
+			&:hover {
+				background: $gray-100
+			}
+
 		}
 
 		&:hover {
 			background-color: $text-white-secondary;
 			cursor: pointer;
+			color: $black;
+
 		}
 
-		a {
-			@include transition();
-			display: inline-block;
-			color: inherit;
-
-			&:hover {
-				color: $black;
-			}
+		.badge {
+			background: $gray-200;
 		}
 	}
 }
+
 
 
 .text-white {
