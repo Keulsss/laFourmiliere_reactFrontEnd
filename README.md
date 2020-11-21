@@ -1,24 +1,39 @@
-# README
+# La Fourmilière - Calendar - React
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Project Links :
 
-Things you may want to cover:
+- url => [lafourmiliere](https://lafourmiliere-benevolat.fr/)
+- GitHub => [github](https://github.com/fthiounn/LaFourmiliere-THP)
 
-* Ruby version
+# How to use
 
-* System dependencies
+### Getting Started
 
-* Configuration
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-* Database creation
+```bash
+  $ git clone
+  $ bundle install
+  $ rails db:create
+  $ rails db:migrate
+  $ rails db:seed
+```
 
-* Database initialization
+then run the app in the development mode.\
 
-* How to run the test suite
+#### `foreman start`
 
-* Services (job queues, cache servers, search engines, etc.)
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-* Deployment instructions
+### Prerequisites
 
-* ...
+To run this app you will need ruby v '2.5.1'
+
+### Built With
+
+Rails-api & [Create React App](https://github.com/facebook/create-react-app)
+
+### License
+
+This project is licensed under the MIT License - see the License.md file for details
