@@ -8,8 +8,10 @@ import ListGroup from "./components/common/listGroup";
 import Widget from "./components/common/widget";
 import dates from "./components/utils/dates";
 import paginator from "./components/utils/paginator";
+import datesFilter from "./components/utils/datesfilter";
 import "./vendor/scss/style.scss";
 import StickyBox from "react-sticky-box";
+
 class App extends Component {
   state = {
     events: [],
@@ -51,11 +53,11 @@ class App extends Component {
     this.setState({ selectedDate: item, currentPage: 1 });
   };
 
-  handleCategoryUnselect = item => {
+  handleCategoryUnselect = () => {
     this.setState({ selectedCategory: null, currentPage: 1 });
   };
 
-  handleDateUnselect = item => {
+  handleDateUnselect = () => {
     this.setState({ selectedDate: null, currentPage: 1 });
   };
 
@@ -70,9 +72,13 @@ class App extends Component {
       selectedCategory
     } = this.state;
 
-    const filtered = selectedCategory
-      ? events.filter(e => e.category_id === selectedCategory.id)
+    const filteredByCategory = selectedCategory
+      ? events.filter(event => event.category_id === selectedCategory.id)
       : events;
+
+    const filtered = selectedDate
+      ? datesFilter(filteredByCategory, selectedDate.id)
+      : datesFilter(filteredByCategory, undefined);
 
     const eventsPaginated = paginator(filtered, currentPage, pageSize);
 
