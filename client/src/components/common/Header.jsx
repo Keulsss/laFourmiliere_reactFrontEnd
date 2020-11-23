@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logoLight from "../../images/demo/logo/logo-light.svg";
 import logoDark from "../../images/demo/logo/logo-dark.svg";
 
 const Header = () => {
   return (
-    <header className="header-sticky header-light bg-white shadow">
+    <header className="header-sticky header-light bg-white shadow" id="header">
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" to="/">
             <img
               className="navbar-logo navbar-logo-light"
               src={logoLight}
@@ -18,7 +19,7 @@ const Header = () => {
               src={logoDark}
               alt="Logo"
             />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"

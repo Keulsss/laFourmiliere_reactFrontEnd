@@ -11,22 +11,29 @@ body {
 
 [class*="container"] {
 
-	+ [class*="container"] {
+	+[class*="container"] {
 		margin-top: ($section-padding / 2);
 	}
 }
 
 .container-full {
 	overflow: hidden;
+	height: 100% !important;
 }
 
 .container-fluid {
-	@include media-breakpoint-up(lg) { max-width: 1370px }
-	@include media-breakpoint-up(xl) { max-width: 1770px; }
+	@include media-breakpoint-up(lg) {
+		max-width: 1370px
+	}
+
+	@include media-breakpoint-up(xl) {
+		max-width: 1770px;
+	}
 }
 
 
 .pattern {
+
 	&::before,
 	&::after {
 		@include rotate(-45deg);
@@ -52,13 +59,14 @@ body {
 	}
 
 	&.pattern-dark {
+
 		&::before,
 		&::after {
 			background: rgba($dark, .05);
 		}
 	}
 
-	> * {
+	>* {
 		position: relative;
 		z-index: 10;
 	}
@@ -86,8 +94,8 @@ body {
 //
 body {
 
-	> section,
-	> footer {
+	>section,
+	>footer {
 		position: relative;
 		margin: 0 auto;
 		padding: $section-padding 0;
@@ -103,8 +111,9 @@ body {
 
 @include media-breakpoint-down(sm) {
 	body {
-		> section,
-		> footer {
+
+		>section,
+		>footer {
 			padding: ($section-padding / 2) 0;
 		}
 
@@ -143,12 +152,12 @@ body {
 	left: 0;
 	z-index: 40;
 
-	> .container,
-	> .container-fluid,
-	> .container-full {
+	>.container,
+	>.container-fluid,
+	>.container-full {
 		height: 100%;
 
-		> .row {
+		>.row {
 			height: 100%;
 		}
 	}
@@ -179,7 +188,9 @@ body {
 	.container-full {
 		height: 100%;
 
-		.row { height: 100%; }
+		.row {
+			height: 100%;
+		}
 	}
 }
 
@@ -222,6 +233,7 @@ section {
 		padding: ($section-padding / 1.5) 0;
 	}
 }
+
 //////////
 // need to add responsive breakpoints here
 //////////
@@ -235,10 +247,21 @@ section {
 	border-color: $border-color;
 	border-style: solid;
 
-	&[class*="-top"] { border-top-width: $border-width; }
-	&[class*="-right"] { border-right-width: $border-width; }
-	&[class*="-bottom"] { border-bottom-width: $border-width; }
-	&[class*="-left"] { border-left-width: $border-width; }
+	&[class*="-top"] {
+		border-top-width: $border-width;
+	}
+
+	&[class*="-right"] {
+		border-right-width: $border-width;
+	}
+
+	&[class*="-bottom"] {
+		border-bottom-width: $border-width;
+	}
+
+	&[class*="-left"] {
+		border-left-width: $border-width;
+	}
 }
 
 %separator-text-white {
@@ -272,8 +295,8 @@ section {
 		bottom: 0;
 		left: 0;
 		height: 100%;
-		
-		> * {
+
+		>* {
 			fill: currentColor;
 			@include shadow();
 		}
@@ -300,8 +323,8 @@ section {
 		bottom: 0;
 		left: 0;
 		height: 100%;
-		
-		> * {
+
+		>* {
 			fill: currentColor;
 			@include shadow(20px);
 		}
@@ -355,8 +378,9 @@ section {
 @include media-breakpoint-up(xl) {
 
 	body {
-		> section,
-		> footer {
+
+		>section,
+		>footer {
 			padding: 7.5rem 0;
 		}
 	}
@@ -367,8 +391,8 @@ section {
 	.container,
 	.container-fluid,
 	.container-full {
-		> .row {
-			> *:not(:last-child) {
+		>.row {
+			>*:not(:last-child) {
 				margin-bottom: 1.875rem;
 			}
 		}

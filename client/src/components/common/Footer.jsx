@@ -3,7 +3,7 @@ import logoLight from "../../images/demo/logo/logo-light.svg";
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-white">
+    <footer className="bg-dark text-white" id="footer">
       <div className="container py-5">
         <div className="row justify-content-between align-items-center">
           <div className="col-md-5 text-center text-md-left">
@@ -16,14 +16,9 @@ const Footer = () => {
             <ul className="socials">
               <li>
                 <a
-                  href="https://www.facebook.com/LaFourmiliereParis"
-                  className="icon-facebook fs-20"
-                ></a>
-              </li>
-              <li>
-                <a
-                  href="https://www.instagram.com/la.fourmiliere/"
-                  className="icon-instagram fs-20"
+                  href="https://www.linkedin.com/in/luc-puiroux-4641a0169/"
+                  className="icon-linkedin fs-20"
+                  target="_blank"
                 ></a>
               </li>
             </ul>

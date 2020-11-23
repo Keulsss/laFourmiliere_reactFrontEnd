@@ -19,7 +19,7 @@ const ListGroup = ({
             href="#"
             className={
               item === selectedItem
-                ? "list-group-item d-flex justify-content-between align-items-center active"
+                ? "list-group-item d-flex justify-content-between align-items-center active shadow"
                 : "list-group-item d-flex justify-content-between align-items-center"
             }
             onClick={

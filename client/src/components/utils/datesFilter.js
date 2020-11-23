@@ -5,74 +5,64 @@ export default function datesFilter(items, selectedDateId) {
     case 2:
       return items.filter(
         item =>
-          new Date(item.start_time) >= moment().startOf("date") &&
-          new Date(item.start_time) <= moment().endOf("date")
+        new Date(item.start_time) >= moment().startOf("date") &&
+        new Date(item.start_time) <= moment().endOf("date")
       );
     case 3:
       return items.filter(
         item =>
-          new Date(item.start_time) >=
-            moment()
-              .startOf("day")
-              .add(1, "days") &&
-          new Date(item.start_time) <=
-            moment()
-              .endOf("day")
-              .add(1, "days")
+        new Date(item.start_time) >=
+        moment()
+        .add(1, "days")
+        .startOf("day") &&
+        new Date(item.start_time) <=
+        moment()
+        .add(1, "days")
+        .endOf("day")
       );
     case 4:
       return items.filter(
         item =>
-          new Date(item.start_time) >=
-            moment().startOf(
-              moment()
-                .endOf("week")
-                .subtract(1, "days")
-            ) && new Date(item.start_time) <= moment().endOf("week")
+        new Date(item.start_time) >=
+        moment()
+        .endOf("week")
+        .subtract(1, "days")
+        .startOf("day") &&
+        new Date(item.start_time) <= moment().endOf("week")
       );
     case 5:
       return items.filter(
         item =>
-          new Date(item.start_time) >= moment().startOf("date") &&
-          new Date(item.start_time) <= moment().endOf("week")
+        new Date(item.start_time) >= moment().startOf("day") &&
+        new Date(item.start_time) <= moment().endOf("week")
       );
     case 6:
-      var startDate = moment()
-        .endOf("week")
-        .add(1, "days");
-      var endDate = moment()
-        .endOf("week")
-        .add(7, "days");
       return items.filter(
         item =>
-          new Date(item.start_time) >= moment().startOf(startDate) &&
-          new Date(item.start_time) <= moment().endOf(endDate)
+        new Date(item.start_time) >=
+        moment()
+        .add(1, "weeks").startOf("week") &&
+        new Date(item.start_time) <=
+        moment()
+        .add(1, "weeks").endOf("week")
       );
     case 7:
       return items.filter(
         item =>
-          new Date(item.start_time) >= moment().startOf("date") &&
-          new Date(item.start_time) <=
-            moment().endOf(
-              moment()
-                .endOf("week")
-                .add(7, "days")
-            )
+        new Date(item.start_time) >= moment().startOf("day") &&
+        new Date(item.start_time) <=
+        moment().endOf("month")
       );
     case 8:
       return items.filter(
         item =>
-          new Date(item.start_time) >=
-            moment().startOf(
-              moment()
-                .endOf("month")
-                .add(1, "days")
-            ) &&
-          new Date(item.start_time) <=
-            moment()
-              .endOf("month")
-              .add(1, "days")
-              .endOf("month")
+        new Date(item.start_time) >=
+        moment()
+        .add(1, "months").startOf("month") &&
+        new Date(item.start_time) <=
+        moment()
+        .add(1, "months")
+        .endOf("month")
       );
     default:
       return items.filter(

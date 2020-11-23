@@ -22,7 +22,7 @@ const Tags = ({
                 : () => onItemSelect(item)
             }
             key={item[valueProperty]}
-            className={item === selectedItem ? "active" : ""}
+            className={item === selectedItem ? "active shadow" : ""}
           >
             {item[textProperty]}
           </a>

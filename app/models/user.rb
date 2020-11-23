@@ -4,8 +4,6 @@ class User < ApplicationRecord
 
   has_many :attendances, dependent: :destroy
   has_many :events, through: :attendances
-  validates :first_name, presence: true
-  validates :last_name, presence: true
   validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   has_one_attached :user_picture
 end

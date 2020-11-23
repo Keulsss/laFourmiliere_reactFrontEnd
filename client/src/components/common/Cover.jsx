@@ -3,7 +3,7 @@ import React from "react";
 class Cover extends React.Component {
   render() {
     return (
-      <div className="row gutter-1 align-items-center">
+      <div className="row gutter-1 align-items-center mb-0">
         <div className="form-group col-md-8">
           <input
             type="email"

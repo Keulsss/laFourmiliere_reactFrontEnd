@@ -75,11 +75,12 @@
 .list-group-minimal {
 
 	a.list-group-item {
-		padding: 1em;
+		padding: 0.8em;
 		border: 0;
 		@include transition();
 		display: inline-block;
 		color: $black !important;
+		width: 95%;
 
 		&.active {
 			background-color: $text-white-primary;
@@ -90,10 +91,12 @@
 		}
 
 		[class*="icon"] {
-			padding-right: 0.8rem;
+			padding-right: 1.5rem;
 			border-radius: 50%;
 			line-height: 2.2rem;
+			width: 0.5rem;
 			color: $primary;
+			margin: 0 !important;
 
 			&:hover {
 				background: $gray-100
