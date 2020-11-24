@@ -27,7 +27,7 @@ class Event extends Component {
       <section className="p-5 bg-light">
         <div
           className="image image-overlay image-blur"
-          style={{ backgroundImage: `url(${image})`, height: "50%" }}
+          style={{ backgroundImage: `url(${image})`, height: "40%" }}
         ></div>
 
         <div className="container shadow bordered">
@@ -40,7 +40,7 @@ class Event extends Component {
               <p>
                 {moment(event.start_time)
                   .locale("fr")
-                  .format("llll")}
+                  .format("DD MMM")}
               </p>
               <h4 className="fs-24 font-weight-normal">{event.title}</h4>
               <p>
@@ -83,7 +83,7 @@ class Event extends Component {
               <p>
                 {moment(event.start_time)
                   .locale("fr")
-                  .format("H:M")}
+                  .format("llll")}
                 <span> </span>-<span> </span>
                 {moment(event.start_time)
                   .add(event.duration, "minutes")
