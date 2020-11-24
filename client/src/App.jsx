@@ -1,11 +1,12 @@
 import React from "react";
-import "./vendor/scss/style.scss";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/common/Header";
-import AllEvents from "./components/allEvents";
+import Login from "./components/common/login";
 import Event from "./components/common/Event.jsx";
 import Footer from "./components/common/Footer";
 import NotFound from "./components/common/notFound";
+import AllEvents from "./components/allEvents";
+import "./vendor/scss/style.scss";
 
 const App = () => {
   return (
@@ -13,10 +14,8 @@ const App = () => {
       <Header />
       <div className="content">
         <Switch>
-          <Route
-            path="/events/:title?/:id"
-            render={props => <Event {...props} />}
-          />
+          <Route path="/signin" component={Login} />
+          <Route path="/events/:id" render={props => <Event {...props} />} />
           <Route path="/not-found" component={NotFound} />
           <Route path="/all-events" exact component={AllEvents} />
           <Redirect from="/" to="/all-events" />

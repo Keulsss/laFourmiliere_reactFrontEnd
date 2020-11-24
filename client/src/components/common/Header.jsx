@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import logoLight from "../../images/demo/logo/logo-light.svg";
 import logoDark from "../../images/demo/logo/logo-dark.svg";
 
@@ -8,7 +7,7 @@ const Header = () => {
     <header className="header-sticky header-light bg-white shadow" id="header">
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light">
-          <Link className="navbar-brand" to="/">
+          <a className="navbar-brand" href="/">
             <img
               className="navbar-logo navbar-logo-light"
               src={logoLight}
@@ -19,7 +18,7 @@ const Header = () => {
               src={logoDark}
               alt="Logo"
             />
-          </Link>
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -39,13 +38,8 @@ const Header = () => {
             </ul>
             <ul className="navbar-nav align-items-center mr-0">
               <li className="nav-item dropdown">
-                <a className="nav-link" href="#">
-                  S'inscrire
-                </a>
-              </li>
-              <li className="nav-item dropdown">
-                <a className="nav-link" href="#">
-                  Connexion
+                <a href="/signin" className="nav-link">
+                  Se connecter
                 </a>
               </li>
             </ul>

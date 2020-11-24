@@ -8,7 +8,7 @@ const EventCard = ({ event }) => {
     <div className="boxed rising p-2 card card-minimal">
       <div className="row no-gutters">
         <div className="col-md-4">
-          <Link to={`/events/${event.title}/${event.id}`}>
+          <Link to={`/events/${event.id}`}>
             <img
               className="card-img-container"
               src={event.image.url}
@@ -23,7 +23,7 @@ const EventCard = ({ event }) => {
                 {event.start_time}
               </Moment>
             </h5>
-            <Link to={`/events/${event.title}/${event.id}`}>
+            <Link to={`/events/${event.id}`}>
               <h5 className="card-title text-black">{event.title}</h5>
             </Link>
             <span className="card-meta">

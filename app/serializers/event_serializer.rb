@@ -1,7 +1,7 @@
 class EventSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
-  attributes :id, :attendances, :category_id, :description, :city, :zip_code, :title, :start_time, :image
+  attributes :id, :attendances, :category_id, :description, :city, :zip_code, :title, :start_time, :image, :duration, :tagline, :max_attendees
 
   def image
     return unless object.event_picture.attached?
