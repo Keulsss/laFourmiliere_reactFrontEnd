@@ -12,10 +12,11 @@ class Login extends Component {
       first_name: "",
       last_name: ""
     },
-    user: {}
+    user: {},
+    errors: {}
   };
 
-  schema = {
+  schema = Joi.object({
     email: Joi.string().email({
       minDomainSegments: 2,
       tlds: { allow: ["com", "fr", "net"] }
@@ -33,12 +34,40 @@ class Login extends Component {
       .min(3)
       .max(30)
       .required()
+  })
+    .with("first_name", "last_name")
+    .xor("password", "access_token")
+    .with("password", "repeat_password");
+
+  validate = () => {
+    const option = {
+      abortEarly: false
+    };
+
+    const result = this.schema.validate(this.state.account, option);
+    if (!result.error) return null;
+
+    const errors = {};
+    for (let item of result.error.details) errors[item.path[0]] = item.message;
+    return errors;
   };
 
-  handleChange = () => {};
+  handleChange = ({ currentTarget: input }) => {
+    const account = { ...this.state.account };
+    account[input.name] = input.value;
+    this.setState({ account });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const errors = this.validate();
+    this.setState({ errors: errors || {} });
+    if (errors) return console.log(errors);
+    console.log("Submitted");
+  };
 
   render() {
-    const { account, user } = this.state;
+    const { account, user, errors } = this.state;
     return (
       <React.Fragment>
         <div className="viewport">
@@ -69,6 +98,7 @@ class Login extends Component {
                             placeholder=""
                             value={user.email}
                             onChange={this.handleChange}
+                            error={errors.user}
                           />
                           <Input
                             name="password"
@@ -77,6 +107,7 @@ class Login extends Component {
                             placeholder=""
                             value={user.password}
                             onChange={this.handleChange}
+                            error={errors.user}
                           />
                           <a href="" className="btn btn-primary btn-block">
                             Se connecter
@@ -91,7 +122,11 @@ class Login extends Component {
                     </div>
                     <div className="accordion-content" data-content>
                       <div className="accordion-content-wrapper">
-                        <form>
+                        <form
+                          onSubmit={this.handleSubmit}
+                          className="needs-validation"
+                          noValidate
+                        >
                           <div className="row mb-0">
                             <div className="col-md-6">
                               <Input
@@ -101,6 +136,7 @@ class Login extends Component {
                                 placeholder=""
                                 value={account.first_name}
                                 onChange={this.handleChange}
+                                error={errors.first_name}
                               />
                             </div>
                             <div className="col-md-6">
@@ -111,6 +147,7 @@ class Login extends Component {
                                 placeholder=""
                                 value={account.last_name}
                                 onChange={this.handleChange}
+                                error={errors.last_name}
                               />
                             </div>
                           </div>
@@ -121,6 +158,7 @@ class Login extends Component {
                             placeholder=""
                             value={account.email}
                             onChange={this.handleChange}
+                            error={errors.email}
                           />
                           <Input
                             name="password"
@@ -129,6 +167,7 @@ class Login extends Component {
                             placeholder=""
                             value={account.password}
                             onChange={this.handleChange}
+                            error={errors.password}
                           />
                           <Input
                             name="repeat_password"
@@ -137,10 +176,14 @@ class Login extends Component {
                             placeholder=""
                             value={account.repeat_password}
                             onChange={this.handleChange}
+                            error={errors.repeat_password}
                           />
-                          <a href="" className="btn btn-primary btn-block">
+                          <button
+                            type="submit"
+                            className="btn btn-primary btn-block"
+                          >
                             Ouvrir un compte
-                          </a>
+                          </button>
                         </form>
                       </div>
                     </div>

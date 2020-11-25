@@ -5,7 +5,7 @@
 
     // Launch Functions
     Launch: function () {
-      // fn.Header();
+      fn.Header();
       fn.Masonry();
       fn.AOS();
       fn.ImageView();
@@ -17,11 +17,11 @@
       fn.Apps();
     },
 
-    // Header: function (){
-    //   $("header").headroom({
-    //     tolerance : 0
-    //   });
-    // },
+    Header: function () {
+      $("header").headroom({
+        tolerance: 0
+      });
+    },
 
     ImageView: function () {
       $('.lightbox').magnificPopup({

@@ -1,5 +1,5 @@
 import React from "react";
-const Input = ({ name, label, type, value, placeholder, onChange }) => {
+const Input = ({ name, label, type, value, placeholder, error, onChange }) => {
   return (
     <div className="form-group">
       <label htmlFor={name}>{label}</label>
@@ -12,6 +12,7 @@ const Input = ({ name, label, type, value, placeholder, onChange }) => {
         value={value}
         onChange={onChange}
       />
+      {error && <div className="invalid-feedback">{error}</div>}
     </div>
   );
 };
