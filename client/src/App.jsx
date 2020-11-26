@@ -7,7 +7,6 @@ import Footer from "./components/common/Footer";
 import NotFound from "./components/common/notFound";
 import AllEvents from "./components/allEvents";
 import "./vendor/scss/style.scss";
-import "./vendor/css/style.css";
 
 const App = () => {
   return (

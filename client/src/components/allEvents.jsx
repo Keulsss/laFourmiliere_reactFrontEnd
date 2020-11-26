@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import Cover from "./common/Cover";
+import Cover from "./common/searchBox";
 import Events from "./Events";
 import Paginate from "./common/Paginate";
 import ListGroup from "./common/listGroup";
 import Widget from "./common/widget";
+import SearchBox from "./common/searchBox";
 import dates from "./utils/dates";
 import paginator from "./utils/paginator";
 import datesFilter from "./utils/datesfilter";
@@ -16,7 +17,10 @@ class AllEvents extends Component {
     categories: [],
     dates: [],
     pageSize: 10,
-    currentPage: 1
+    currentPage: 1,
+    selectedCategory: null,
+    selectedDate: null,
+    searchQuery: ""
   };
 
   componentDidMount = () => {
@@ -44,11 +48,11 @@ class AllEvents extends Component {
   };
 
   handleCategorySelect = item => {
-    this.setState({ selectedCategory: item, currentPage: 1 });
+    this.setState({ selectedCategory: item, searchQuery: "", currentPage: 1 });
   };
 
   handleDateSelect = item => {
-    this.setState({ selectedDate: item, currentPage: 1 });
+    this.setState({ selectedDate: item, searchQuery: "", currentPage: 1 });
   };
 
   handleCategoryUnselect = () => {
@@ -59,29 +63,44 @@ class AllEvents extends Component {
     this.setState({ selectedDate: null, currentPage: 1 });
   };
 
+  handleSubmit = query => {
+    this.setState({
+      searchQuery: query,
+      selectedCategory: null,
+      selectedDate: null,
+      currentPage: 1
+    });
+  };
+
   getPagedData = () => {
     const {
       events,
       pageSize,
       currentPage,
       selectedDate,
-      selectedCategory
+      selectedCategory,
+      searchQuery
     } = this.state;
 
-    const filtered = selectedDate
-      ? datesFilter(events, selectedDate.id)
-      : datesFilter(events, undefined);
+    const filteredByCaegory = selectedCategory
+      ? events.filter(event => event.category_id === selectedCategory.id)
+      : null;
+    let filtered = events;
+    if (searchQuery)
+      filtered = events.filter(e =>
+        e.title.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+    else if (selectedDate) filtered = datesFilter(events, selectedDate.id);
+    else if (selectedCategory)
+      filtered = events.filter(
+        event => event.category_id === selectedCategory.id
+      );
+    else if (selectedCategory && selectedDate)
+      filtered = datesFilter(filteredByCaegory, selectedDate.id);
+    else filtered = events;
 
-    const filteredByCategory = selectedCategory
-      ? filtered.filter(event => event.category_id === selectedCategory.id)
-      : filtered;
-
-    const eventsPaginated = paginator(
-      filteredByCategory,
-      currentPage,
-      pageSize
-    );
-    return { totalCount: filteredByCategory.length, data: eventsPaginated };
+    const eventsPaginated = paginator(filtered, currentPage, pageSize);
+    return { totalCount: filtered.length, data: eventsPaginated };
   };
 
   render() {
@@ -92,7 +111,8 @@ class AllEvents extends Component {
       pageSize,
       currentPage,
       selectedDate,
-      selectedCategory
+      selectedCategory,
+      searchQuery
     } = this.state;
 
     const { totalCount, data: eventsPaginated } = this.getPagedData();
@@ -128,7 +148,16 @@ class AllEvents extends Component {
         </aside>
         <div className="col-md-7">
           <div className="container-fluid">
-            <Cover />
+            <div className="row gutter-1 align-items-center mb-0">
+              <div className="form-group col-md-8">
+                <SearchBox value={searchQuery} onChange={this.handleSearch} />
+              </div>
+              <div className="form-group col-md-2">
+                <button className="btn btn-sm btn-outline-primary col">
+                  Rechercher
+                </button>
+              </div>
+            </div>
             <Events
               currentPage={currentPage}
               pageSize={pageSize}
