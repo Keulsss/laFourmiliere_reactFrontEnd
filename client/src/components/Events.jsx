@@ -1,7 +1,7 @@
 import React from "react";
 import EventCard from "./EventCard";
-import sorry from "../../images/feeling-sorry.png";
-import orderByAttendances from "../utils/orderByAttendances";
+import sorry from "../images/feeling-sorry.png";
+import orderByAttendances from "./utils/orderByAttendances";
 
 const Events = ({ eventsPaginated, events }) => {
   const ordered = orderByAttendances(events);

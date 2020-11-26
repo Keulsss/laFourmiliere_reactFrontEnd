@@ -1,16 +1,15 @@
 import React from "react";
-const Input = ({ name, label, type, value, placeholder, error, onChange }) => {
+import { IntlProvider, FormattedMessage, FormattedNumber } from "react-intl";
+
+const Input = ({ name, label, error, ...rest }) => {
   return (
     <div className="form-group">
       <label htmlFor={name}>{label}</label>
       <input
-        type={type}
-        className="form-control"
-        id={name}
-        placeholder={placeholder}
+        {...rest}
         name={name}
-        value={value}
-        onChange={onChange}
+        className={error ? "form-control is-invalid" : "form-control"}
+        id={name}
       />
       {error && <div className="invalid-feedback">{error}</div>}
     </div>

@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/common/Header";
-import LoginForm from "./components/common/loginForm";
-import Event from "./components/common/Event.jsx";
+import Login from "./components/login";
+import Event from "./components/Event.jsx";
 import Footer from "./components/common/Footer";
 import NotFound from "./components/common/notFound";
 import AllEvents from "./components/allEvents";
@@ -15,7 +15,7 @@ const App = () => {
       <Header />
       <div className="content">
         <Switch>
-          <Route path="/signin" component={LoginForm} />
+          <Route path="/signin" component={Login} />
           <Route path="/events/:id" render={props => <Event {...props} />} />
           <Route path="/not-found" component={NotFound} />
           <Route path="/all-events" exact component={AllEvents} />

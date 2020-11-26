@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Cover from "./common/Cover";
-import Events from "./common/Events";
+import Events from "./Events";
 import Paginate from "./common/Paginate";
 import ListGroup from "./common/listGroup";
 import Widget from "./common/widget";
