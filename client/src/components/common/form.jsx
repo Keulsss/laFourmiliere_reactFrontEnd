@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Input from "./input";
-import Joi from "joi";
 
 class Form extends Component {
   state = { data: {}, errors: {} };
@@ -10,7 +9,7 @@ class Form extends Component {
       abortEarly: false
     };
 
-    const { error, value } = this.schema.validate(this.state.data, option);
+    const { error } = this.schema.validate(this.state.data, option);
     if (!error) return null;
 
     const errors = {};

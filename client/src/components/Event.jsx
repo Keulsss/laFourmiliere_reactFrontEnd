@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import moment from "moment";
 import "moment/locale/fr";
+import http from "../services/httpService";
+import config from "../config.json";
 
 class Event extends Component {
   state = {
@@ -8,18 +10,13 @@ class Event extends Component {
     image: ""
   };
 
-  componentDidMount = () => {
+  async componentDidMount() {
     const event_id = this.props.match.params.id;
-    const url = `/api/v1/events/${event_id}`;
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          event: data,
-          image: data.image.url
-        });
-      });
-  };
+    const url = `${config.apiEndPoint}/${event_id}`;
+    const { data: event } = await http.get(url);
+
+    this.setState({ event, image: event.image.url });
+  }
 
   render() {
     const { event, image } = this.state;

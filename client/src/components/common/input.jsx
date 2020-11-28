@@ -1,5 +1,4 @@
 import React from "react";
-import { IntlProvider, FormattedMessage, FormattedNumber } from "react-intl";
 
 const Input = ({ name, label, error, ...rest }) => {
   return (

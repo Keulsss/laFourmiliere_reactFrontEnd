@@ -7,11 +7,14 @@ import Footer from "./components/common/Footer";
 import NotFound from "./components/common/notFound";
 import AllEvents from "./components/allEvents";
 import "./vendor/scss/style.scss";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
     <React.Fragment>
       <Header />
+      <ToastContainer />
       <div className="content">
         <Switch>
           <Route path="/signin" component={Login} />
