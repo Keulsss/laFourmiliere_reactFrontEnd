@@ -1,0 +1,6 @@
+{
+  "apiUrl": "/api/v1",
+  "apiEndPoint": "/api/v1/events",
+  "eventsUrl": "/api/v1/events/index",
+  "categoriesUrl": "/api/v1/categories/index"
+}
