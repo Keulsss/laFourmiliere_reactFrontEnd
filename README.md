@@ -13,15 +13,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ```bash
   $ git clone
+  $ cd server
   $ bundle install
   $ rails db:create
   $ rails db:migrate
   $ rails db:seed
+  $ foreman start
 ```
-
-then run the app in the development mode.\
-
-#### `foreman start`
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.

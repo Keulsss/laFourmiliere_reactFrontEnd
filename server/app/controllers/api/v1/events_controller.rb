@@ -10,9 +10,9 @@ class Api::V1::EventsController < ApplicationController
     @event = Event.new(event_params)
     if @event.save
       @event.event_picture.attach(params.dig(:event, :event_picture))
-      render json: event
+      render json: @event
     else
-      render json: { alert: event.errors.full_messages }
+      render json: { alert: @event.errors.full_messages }
     end
   end
 
