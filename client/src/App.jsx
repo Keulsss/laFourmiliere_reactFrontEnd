@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Header from "./components/common/Header";
 import Login from "./components/login";
+import Profile from "./components/profile";
 import Event from "./components/Event.jsx";
 import Footer from "./components/common/Footer";
 import NotFound from "./components/common/notFound";
@@ -15,8 +16,9 @@ const App = () => {
     <React.Fragment>
       <Header />
       <ToastContainer />
-      <div className="content">
+      <section>
         <Switch>
+          <Route path="/profile/:id" render={props => <Profile {...props} />} />
           <Route path="/signin" component={Login} />
           <Route path="/events/:id" render={props => <Event {...props} />} />
           <Route path="/not-found" component={NotFound} />
@@ -24,7 +26,7 @@ const App = () => {
           <Redirect from="/" to="/all-events" />
           <Redirect to="/not-found" />
         </Switch>
-      </div>
+      </section>
       <Footer />
     </React.Fragment>
   );

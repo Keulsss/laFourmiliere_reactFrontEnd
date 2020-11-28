@@ -12,7 +12,7 @@ import StickyBox from "react-sticky-box";
 import moment from "moment";
 import "moment/locale/fr";
 import http from "../services/httpService";
-import config from "../config.json";
+import { categoriesUrl, eventsUrl } from "../config.json";
 
 class AllEvents extends Component {
   state = {
@@ -25,8 +25,8 @@ class AllEvents extends Component {
   };
 
   async componentDidMount() {
-    const { data: events } = await http.get(config.eventsUrl);
-    const { data: categories } = await http.get(config.categoriesUrl);
+    const { data: events } = await http.get(`${eventsUrl}/index`);
+    const { data: categories } = await http.get(`${categoriesUrl}/index`);
 
     this.setState({ dates, categories, events });
   }
@@ -155,7 +155,7 @@ class AllEvents extends Component {
                 height: 800,
                 position: "relative",
                 overflow: "auto",
-                top: 30
+                top: 90
               }}
             >
               <ListGroup
@@ -175,7 +175,7 @@ class AllEvents extends Component {
             </div>
           </StickyBox>
         </aside>
-        <div className="col-md-7">
+        <div className="col-md-7 mt-10">
           <div className="container-fluid">
             <form onSubmit={this.handleSearchBoxSubmit}>
               <div className="row gutter-1 align-items-center mb-0">

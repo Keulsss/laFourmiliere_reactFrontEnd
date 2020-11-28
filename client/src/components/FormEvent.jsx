@@ -24,12 +24,12 @@ const FormEvent = () => {
 
   return (
     <>
-      <Button
+      {/* <Button
         className="btn btn-rounded btn-outline-primary ml-md-1"
         onClick={handleShow}
       >
         Créer un évènement
-      </Button>
+      </Button> */}
 
       <Modal
         show={show}

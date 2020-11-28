@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import moment from "moment";
 import "moment/locale/fr";
 import http from "../services/httpService";
-import config from "../config.json";
+import { eventsUrl } from "../config.json";
 
 class Event extends Component {
   state = {
@@ -12,8 +12,7 @@ class Event extends Component {
 
   async componentDidMount() {
     const event_id = this.props.match.params.id;
-    const url = `${config.apiEndPoint}/${event_id}`;
-    const { data: event } = await http.get(url);
+    const { data: event } = await http.get(`${eventsUrl}/${event_id}`);
 
     this.setState({ event, image: event.image.url });
   }
@@ -21,17 +20,17 @@ class Event extends Component {
   render() {
     const { event, image } = this.state;
     return (
-      <section className="p-5 bg-light">
+      <section className="py-10 bg-light">
         <div
           className="image image-overlay image-blur"
           style={{ backgroundImage: `url(${image})`, height: "40%" }}
         ></div>
 
         <div className="container shadow bordered">
-          <div className="row">
+          <div className="row bordered">
             <div
-              className="col-md-12 col-lg-8"
-              style={{ backgroundImage: `url(${image})`, height: 400 }}
+              className="col-md-12 col-lg-8 image-overlay"
+              style={{ backgroundImage: `url(${image})`, height: 330 }}
             ></div>
             <div className="col-md-6 col-lg-4 p-5 text-left bg-light">
               <p>

@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "./common/form";
 import Joi from "joi";
+import { register } from "../services/userService";
 
 class SignUpForm extends Form {
   state = {
@@ -39,17 +40,22 @@ class SignUpForm extends Form {
     .xor("password", "access_token")
     .with("password", "repeat_password");
 
-  doSubmit = () => {
-    console.log("Submitted");
+  doSubmit = async () => {
+    try {
+      await register(this.state.data);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const errors = { ...this.state.errors };
+        errors = ex.response.data;
+        console.log(errors);
+        this.setState({ errors });
+      }
+    }
   };
 
   render() {
     return (
-      <form
-        onSubmit={this.handleSubmit}
-        className="needs-validation"
-        noValidate
-      >
+      <form onSubmit={this.doSubmit} className="needs-validation" noValidate>
         <div className="row mb-0">
           <div className="col-md-6">
             {this.renderInput("first_name", "Prénom", "text")}

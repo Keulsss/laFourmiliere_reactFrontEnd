@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+  mount_devise_token_auth_for "User", at: "auth"
+
   namespace :api do
     namespace :v1 do
       get "events/index"
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
       get "/events/:id", to: "events#show"
       delete "/destroy/:id", to: "events#destroy"
       get "categories/index"
-      devise_for :users
+      resources :users
     end
   end
 

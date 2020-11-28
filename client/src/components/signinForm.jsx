@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import Form from "./common/form";
 import Joi from "joi";
+import { login } from "../services/authService";
 
 class SignInForm extends Form {
   state = { data: { email: "", password: "" }, errors: {} };
@@ -15,13 +16,14 @@ class SignInForm extends Form {
       .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
   }).xor("password", "access_token");
 
-  doSubmit = () => {
-    console.log("Submitted");
+  doSubmit = async () => {
+    const { data } = this.state;
+    await login(data.email, data.password);
   };
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.doSubmit}>
         {this.renderInput("email", "Adresse électronique", "text")}
         {this.renderInput("password", "Mot de passe", "password")}
         {this.renderButton("Se connecter")}
