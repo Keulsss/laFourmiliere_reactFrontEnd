@@ -1,24 +1,21 @@
 import React from "react";
 import Form from "./common/form";
-import Joi from "joi";
 import { login } from "../services/authService";
 
 class SignInForm extends Form {
   state = { data: { email: "", password: "" }, errors: {} };
 
-  schema = Joi.object({
-    email: Joi.string().email({
-      minDomainSegments: 2,
-      tlds: { allow: ["com", "fr", "net"] }
-    }),
-    password: Joi.string()
-      .min(8)
-      .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
-  }).xor("password", "access_token");
-
   doSubmit = async () => {
-    const { data } = this.state;
-    await login(data.email, data.password);
+    try {
+      const { data } = this.state;
+      const { data: jwt } = await login(data.email, data.password);
+      localStorage.setItem("token", jwt);
+      this.props.history.push("/");
+    } catch (ex) {
+      const errors = { ...this.state.errors };
+      errors.email = ex.response.data;
+      this.setState({ errors });
+    }
   };
 
   render() {

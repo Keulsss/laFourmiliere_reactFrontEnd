@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import reportWebVitals from "./reportWebVitals";
-import logger from "./services/logService";
+import { init } from "./services/logService";
 
-logger.init();
+init();
 
 ReactDOM.render(
   <BrowserRouter>

@@ -7,12 +7,12 @@ import SearchBox from "./common/searchBox";
 import dates from "./utils/dates";
 import paginator from "./utils/paginator";
 import datesFilter from "./utils/datesfilter";
-import "../vendor/scss/style.scss";
 import StickyBox from "react-sticky-box";
 import moment from "moment";
 import "moment/locale/fr";
-import http from "../services/httpService";
-import { categoriesUrl, eventsUrl } from "../config.json";
+import { getEvents } from "../services/eventService";
+import { getCategories } from "../services/categoryService";
+import "../vendor/scss/style.scss";
 
 class AllEvents extends Component {
   state = {
@@ -25,8 +25,8 @@ class AllEvents extends Component {
   };
 
   async componentDidMount() {
-    const { data: events } = await http.get(`${eventsUrl}/index`);
-    const { data: categories } = await http.get(`${categoriesUrl}/index`);
+    const { data: events } = await getEvents();
+    const { data: categories } = await getCategories();
 
     this.setState({ dates, categories, events });
   }

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import "moment/locale/fr";
-import http from "../services/httpService";
-import { eventsUrl } from "../config.json";
+import { getEvent } from "../services/eventService";
 
 class Event extends Component {
   state = {
@@ -10,11 +9,19 @@ class Event extends Component {
     image: ""
   };
 
-  async componentDidMount() {
-    const event_id = this.props.match.params.id;
-    const { data: event } = await http.get(`${eventsUrl}/${event_id}`);
+  async populateEvent() {
+    try {
+      const eventId = this.props.match.params.id;
+      const { data: event } = await getEvent(eventId);
+      this.setState({ event, image: event.image.url });
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404)
+        this.props.history.replace("/not-found")
+    }
+  }
 
-    this.setState({ event, image: event.image.url });
+  async componentDidMount() {
+    await this.populateEvent()
   }
 
   render() {
@@ -30,7 +37,10 @@ class Event extends Component {
           <div className="row bordered">
             <div
               className="col-md-12 col-lg-8 image-overlay"
-              style={{ backgroundImage: `url(${image})`, height: 330 }}
+              style={{
+                backgroundImage: `url(${image})`,
+                height: 330
+              }}
             ></div>
             <div className="col-md-6 col-lg-4 p-5 text-left bg-light">
               <p>

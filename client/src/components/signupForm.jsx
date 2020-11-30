@@ -42,12 +42,18 @@ class SignUpForm extends Form {
 
   doSubmit = async () => {
     try {
-      await register(this.state.data);
+      const response = await register(this.state.data);
+      localStorage.setItem(
+        "token",
+        JSON.stringify({
+          "access-token": response.headers["access-token"]
+        })
+      );
+      this.props.history.push("/all-events");
     } catch (ex) {
-      if (ex.response && ex.response.status === 400) {
+      if (ex.response) {
         const errors = { ...this.state.errors };
-        errors = ex.response.data;
-        console.log(errors);
+        errors.email = ex.response.data;
         this.setState({ errors });
       }
     }

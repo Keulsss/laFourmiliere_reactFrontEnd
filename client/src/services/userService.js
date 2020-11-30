@@ -1,6 +1,6 @@
 import http from "./httpService";
 
-const apiEndPoint = "/auth"
+const apiEndPoint = "/api/v1/auth"
 
 export function register(user) {
   return http.post(apiEndPoint, {

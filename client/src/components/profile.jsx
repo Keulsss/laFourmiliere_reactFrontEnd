@@ -1,7 +1,7 @@
-import React, { Component, useState } from "react";
-import FormEvent from "./FormEvent";
-import http from "../services/httpService";
-import { usersUrl } from "../config.json";
+import React, { Component } from "react";
+// import http from "../services/httpService";
+// import { usersUrl } from "../config.json";
+import image from "../images/demo/user-2.jpg";
 
 class Profile extends Component {
   state = { user: [] };
@@ -18,14 +18,14 @@ class Profile extends Component {
       <React.Fragment>
         <section className="bg-light">
           <div className="container">
-            <div className="row justify-content-center align-items-end vh-30 mb-5">
+            <div className="row justify-content-center align-items-end vh-40 mb-5">
               <div className="col col-md-10 col-lg-8">
                 <div className="row align-items-center">
                   <div className="col-4 col-lg-3">
                     <img
                       className="mr-3 avatar avatar-xl rounded"
-                      src="../images/demo/user-2.jpg"
-                      alt="Generic placeholder image"
+                      src={image}
+                      alt="Generic placeholder"
                     />
                   </div>
                   <div className="col">
@@ -67,7 +67,7 @@ class Profile extends Component {
                       <div className="form-row">
                         <div className="col">
                           <div className="form-group">
-                            <label for="firstName">Prénom</label>
+                            <label htmlFor="firstName">Prénom</label>
                             <input
                               type="email"
                               className="form-control"
@@ -118,7 +118,7 @@ class Profile extends Component {
             </div>
           </div>
 
-          <div className="container bg-light my-5">
+          <div className="container bg-light">
             <div className="row justify-content-center">
               <div className="col-md-10 col-lg-8">
                 <div className="row">
