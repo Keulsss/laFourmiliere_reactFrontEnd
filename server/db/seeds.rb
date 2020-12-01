@@ -40,7 +40,7 @@ Petite précision, les barmens sont des amis et sont au courant du projet !",
     category_id: Category.find_by(name: "Soutien scolaire").id,
   )
 
-  event.event_picture.attach(io: File.open("client/src/images/demo/hotel/hotel-6.jpg"), filename: "hotel-6.jpg")
+  event.event_picture.attach(io: File.open("../client/src/images/demo/hotel/hotel-6.jpg"), filename: "hotel-6.jpg")
 
   puts "Seed of events Soutien scolaire"
 end
@@ -59,7 +59,7 @@ end
     category_id: Category.find_by(name: "Événements Spéciaux").id,
   )
 
-  event.event_picture.attach(io: File.open("client/src/images/demo/event/event-2.jpg"), filename: "event-2.jpg")
+  event.event_picture.attach(io: File.open("../client/src/images/demo/event/event-2.jpg"), filename: "event-2.jpg")
 
   puts "Seed of events Événements Spéciaux"
 end
@@ -78,7 +78,7 @@ end
     category_id: Category.find_by(name: "Écologie").id,
   )
 
-  event.event_picture.attach(io: File.open("client/src/images/demo/studio/studio-5.jpg"), filename: "studio-5.jpg")
+  event.event_picture.attach(io: File.open("../client/src/images/demo/studio/studio-5.jpg"), filename: "studio-5.jpg")
 
   puts "Seed of events Ecologie"
 end
@@ -111,7 +111,7 @@ end
     category_id: Category.find_by(name: "Sports inclusifs").id,
   )
 
-  event.event_picture.attach(io: File.open("client/src/images/demo/fitness/fitness-4.jpg"), filename: "fitness-4.jpg")
+  event.event_picture.attach(io: File.open("../client/src/images/demo/fitness/fitness-4.jpg"), filename: "fitness-4.jpg")
 
   puts "Seed of events Sports inclusifs"
 end

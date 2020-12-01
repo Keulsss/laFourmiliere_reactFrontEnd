@@ -1,12 +1,25 @@
-import http from "./httpService";
-
+import http from "./httpService"
 const apiEndPoint = "/api/v1/auth"
+const usersUrl = "/api/v1/users"
 
-export function register(user) {
-  return http.post(apiEndPoint, {
-    first_name: user.first_name,
-    last_name: user.last_name,
+function userUrl(id) {
+  return `${usersUrl}/${id}`
+}
+
+export async function register(user) {
+  const response = await http.post(apiEndPoint, {
     email: user.email,
-    password: user.password
+    password: user.password,
   })
+  localStorage.setItem('user',
+    JSON.stringify({
+      'access-token': response.headers['access-token'],
+      'client': response.headers['client'],
+      'uid': response.data.data.uid,
+      'id': response.data.data.id
+    }))
+}
+
+export function getUser(id) {
+  return http.get(userUrl(id))
 }

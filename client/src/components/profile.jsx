@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-// import http from "../services/httpService";
-// import { usersUrl } from "../config.json";
+import * as userService from "../services/userService"
 import image from "../images/demo/user-2.jpg";
 
 class Profile extends Component {
   state = { user: [] };
 
-  // async componentDidMount() {
-  //   const user_id = this.props.match.params.id;
-  //   const { data: user } = await http.get(`${usersUrl}/${user_id}`);
+  async componentDidMount() {
+    const userId = this.props.match.params.id;
+    const { data: user } = await userService.getUser(userId);
 
-  //   this.setState({ user });
-  // }
+    this.setState({ user });
+  }
 
   render() {
     return (
@@ -79,7 +78,7 @@ class Profile extends Component {
                         </div>
                         <div className="col">
                           <div className="form-group">
-                            <label for="secondName">Nom</label>
+                            <label htmlFor="secondName">Nom</label>
                             <input
                               type="email"
                               className="form-control"
@@ -93,7 +92,7 @@ class Profile extends Component {
                       <div className="form-row">
                         <div className="col">
                           <div className="form-group">
-                            <label for="userMail">Adresse électronique</label>
+                            <label htmlFor="userMail">Adresse électronique</label>
                             <input
                               type="email"
                               className="form-control"
@@ -130,7 +129,7 @@ class Profile extends Component {
                       <div className="form-row">
                         <div className="col">
                           <div className="form-group">
-                            <label for="firstName">Prénom</label>
+                            <label htmlFor="firstName">Prénom</label>
                             <input
                               type="email"
                               className="form-control"
@@ -142,7 +141,7 @@ class Profile extends Component {
                         </div>
                         <div className="col">
                           <div className="form-group">
-                            <label for="secondName">Nom</label>
+                            <label htmlFor="secondName">Nom</label>
                             <input
                               type="email"
                               className="form-control"
@@ -156,7 +155,7 @@ class Profile extends Component {
                       <div className="form-row">
                         <div className="col">
                           <div className="form-group">
-                            <label for="userMail">Adresse électronique</label>
+                            <label htmlFor="userMail">Adresse électronique</label>
                             <input
                               type="email"
                               className="form-control"

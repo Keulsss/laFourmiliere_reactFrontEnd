@@ -1,16 +1,17 @@
 import React from "react";
 import Form from "./common/form";
-import { login } from "../services/authService";
+import auth from "../services/authService";
 
 class SignInForm extends Form {
   state = { data: { email: "", password: "" }, errors: {} };
 
-  doSubmit = async () => {
+  doSubmit = async (e) => {
+    e.preventDefault();
     try {
       const { data } = this.state;
-      const { data: jwt } = await login(data.email, data.password);
-      localStorage.setItem("token", jwt);
-      this.props.history.push("/");
+      await auth.login(data.email, data.password);
+
+      window.location = "/";
     } catch (ex) {
       const errors = { ...this.state.errors };
       errors.email = ex.response.data;

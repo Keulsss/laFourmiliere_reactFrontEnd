@@ -8,7 +8,7 @@ function eventUrl(id) {
 }
 
 export function getEvents() {
-  return http.get(`${eventsUrl}/index`)
+  return http.get(eventsUrl)
 }
 
 export function getEvent(eventId) {
@@ -24,7 +24,7 @@ export function saveEvent(event) {
     return http.put(eventUrl(event.id), body)
   }
 
-  return http.post(`${eventsUrl}`, event)
+  return http.post(eventsUrl, event)
 }
 
 export function deleteEvent(eventId) {
