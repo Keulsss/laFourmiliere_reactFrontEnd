@@ -20,7 +20,7 @@ axios.interceptors.response.use(null, error => {
   return Promise.reject(error);
 });
 
-function setJwt(jxt) {
+function setJwt(jwt) {
   axios.defaults.headers.common["access-token"] = jwt;
 }
 
