@@ -46,21 +46,20 @@ const Header = ({ user }) => {
               </ul>
               <ul className="navbar-nav align-items-center mr-0">
                 <li className="nav-item dropdown">
-                  {user ? (
-                    <React.Fragment><Link
-                      to={`/profile/${JSON.parse(user).id}`}
-                      className="nav-link"
-                    >
-                      Mon compte
-                  </Link>
-                      <Link
-                        to="/logout"
-                        className="nav-link"
-                      >
-                        Se déconnecter
-                </Link></React.Fragment>
-
-                  ) : (
+                  {user ? (< React.Fragment > <ul className="navbar-nav align-items-center mr-0">
+                    <li className="nav-item dropdown">
+                      <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i className="icon-user2"></i>
+                      </a>
+                      <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <Link className="dropdown-item" to={`/profile/${JSON.parse(user).id}`}>Mon compte</Link>
+                        <div className="dropdown-divider"></div>
+                        <Link className="dropdown-item" to="/events/create">Créer un évènement</Link>
+                        <div className="dropdown-divider"></div>
+                        <Link className="dropdown-item" to="/logout">Se déconnecter</Link>
+                      </div>
+                    </li>
+                  </ul></React.Fragment>) : (
                       <a href="/signin" className="nav-link">
                         Se connecter
                       </a>
@@ -71,7 +70,7 @@ const Header = ({ user }) => {
           </nav>
         </div>
       </header>
-    </React.Fragment>
+    </React.Fragment >
   );
 }
 

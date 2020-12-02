@@ -12,7 +12,6 @@ import moment from "moment";
 import "moment/locale/fr";
 import { getEvents } from "../services/eventService";
 import { getCategories } from "../services/categoryService";
-import "../vendor/scss/style.scss";
 
 class AllEvents extends Component {
   state = {

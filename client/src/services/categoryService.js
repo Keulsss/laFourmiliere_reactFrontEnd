@@ -8,7 +8,7 @@ function categoryUrl(id) {
 }
 
 export function getCategories() {
-  return http.get(categoriesUrl)
+  return http.get(`${categoriesUrl}`)
 }
 
 export function getCategory(categoryId) {

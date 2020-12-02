@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "./common/form";
 import auth from "../services/authService";
+import { Redirect } from "react-router-dom"
 
 class SignInForm extends Form {
   state = { data: { email: "", password: "" }, errors: {} };
@@ -10,8 +11,8 @@ class SignInForm extends Form {
     try {
       const { data } = this.state;
       await auth.login(data.email, data.password);
-
-      window.location = "/";
+      const { state } = this.props.location;
+      window.location = state ? state.from.pathname : "/";
     } catch (ex) {
       const errors = { ...this.state.errors };
       errors.email = ex.response.data;
@@ -20,6 +21,7 @@ class SignInForm extends Form {
   };
 
   render() {
+    if (auth.getCurrentUser()) return <Redirect to="/" />;
     return (
       <form onSubmit={this.doSubmit}>
         {this.renderInput("email", "Adresse électronique", "text")}

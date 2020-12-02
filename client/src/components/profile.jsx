@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom"
 import * as userService from "../services/userService"
 import image from "../images/demo/user-2.jpg";
 
@@ -38,15 +39,16 @@ class Profile extends Component {
                         </span>
                       </div>
                       <div className="col-md-4 text-left text-md-right">
-                        <button
+                        <Link
                           type="button"
                           className="btn btn-rounded btn-ico btn-white"
                           data-toggle="tooltip"
                           data-placement="top"
                           title="Proposer un évènement"
+                          to="/events/create"
                         >
                           <i className="icon-plus2 fs-20"></i>
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
