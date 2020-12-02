@@ -48,13 +48,13 @@ const Header = ({ user }) => {
                 <li className="nav-item dropdown">
                   {user ? (< React.Fragment > <ul className="navbar-nav align-items-center mr-0">
                     <li className="nav-item dropdown">
-                      <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button className="nav-link dropdown-toggle" href="#" id="navbarDropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i className="icon-user2"></i>
-                      </a>
+                      </button>
                       <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <Link className="dropdown-item" to={`/profile/${JSON.parse(user).id}`}>Mon compte</Link>
+                        <Link className="dropdown-item" to={`/profile/${JSON.parse(user).data.id}`}>Mon compte</Link>
                         <div className="dropdown-divider"></div>
-                        <Link className="dropdown-item" to="/events/create">Créer un évènement</Link>
+                        <a className="dropdown-item" href="/events/create">Créer un évènement</a>
                         <div className="dropdown-divider"></div>
                         <Link className="dropdown-item" to="/logout">Se déconnecter</Link>
                       </div>

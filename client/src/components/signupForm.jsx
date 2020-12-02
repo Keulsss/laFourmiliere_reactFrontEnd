@@ -47,8 +47,8 @@ class SignUpForm extends Form {
             {this.renderInput("nickname", "Nom", "text")}
           </div>
         </div> */}
-        {this.renderInput("email", "Adresse électronique", "text")}
-        {this.renderInput("password", "Mot de passe", "password")}
+        {this.renderInput("form-control", "email", "Adresse électronique", "text")}
+        {this.renderInput("form-control", "password", "Mot de passe", "password")}
         {this.renderButton("Ouvrir un compte")}
       </form>
     );

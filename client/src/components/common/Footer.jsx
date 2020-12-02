@@ -21,7 +21,7 @@ const Footer = () => {
                     className="icon-linkedin fs-20"
                     target="_blank"
                     rel="noreferrer"
-                  />
+                  ></a>
                 </li>
               </ul>
             </div>

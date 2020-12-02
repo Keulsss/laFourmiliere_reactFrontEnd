@@ -11,6 +11,7 @@ const RichTextEditor = ({ name, value, onChange }) => {
   return (
     <ReactSummernote
       value={value}
+      name={name}
       options={{
         height: 100,
         dialogsInBody: true,

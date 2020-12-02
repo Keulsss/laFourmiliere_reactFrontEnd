@@ -14,7 +14,7 @@ export async function login(email, password) {
       'access-token': response.headers['access-token'],
       'client': response.headers['client'],
       'uid': response.data.data.uid,
-      'id': response.data.data.id
+      'data': response.data.data
     }))
 }
 

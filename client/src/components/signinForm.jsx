@@ -24,8 +24,8 @@ class SignInForm extends Form {
     if (auth.getCurrentUser()) return <Redirect to="/" />;
     return (
       <form onSubmit={this.doSubmit}>
-        {this.renderInput("email", "Adresse électronique", "text")}
-        {this.renderInput("password", "Mot de passe", "password")}
+        {this.renderInput("form-control", "email", "Adresse électronique", "text")}
+        {this.renderInput("form-control", "password", "Mot de passe", "password")}
         {this.renderButton("Se connecter")}
       </form>
     );

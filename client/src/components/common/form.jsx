@@ -25,6 +25,12 @@ class Form extends Component {
     this.setState({ data });
   };
 
+  editorHandleChange = content => {
+    const data = { ...this.state.data };
+    data["description"] = content;
+    this.setState({ data });
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     const errors = this.validate();
@@ -71,7 +77,7 @@ class Form extends Component {
 
   renderRichTextEditor(name) {
     const { data } = this.state;
-    return (<RichTextEditor value={data[name]} onChange={this.handleChange} name={name} />);
+    return (<RichTextEditor value={data[name]} onChange={this.editorHandleChange} name={name} />);
   }
 }
 
